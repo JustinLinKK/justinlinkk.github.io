@@ -11,35 +11,33 @@ redirect_from:
 
 Education
 ======
-* Ph.D in Version Control Theory, GitHub University, 2018 (expected)
-* M.S. in Jekyll, GitHub University, 2014
-* B.S. in GitHub, GitHub University, 2012
+* B.E&M. in Electrical Engineering & Management, McMaster University, 2025 (Expected)
 
 Work experience
 ======
-* Spring 2024: Academic Pages Collaborator
-  * GitHub University
-  * Duties includes: Updates and improvements to template
-  * Supervisor: The Users
+* Fall 2024: Branch Treasurer
+  * IEEE McMaster Student Branch
+  * Duties includes: Finance Plaaning & Management, Workshop Organization.
 
-* Fall 2015: Research Assistant
-  * GitHub University
-  * Duties included: Merging pull requests
-  * Supervisor: Professor Hub
+* Fall 2023: Branch Vice-Chair
+  * IEEE McMaster Student Branch
+  * Duties includes: Workshop Organization, Public Relation, Finance Management.
 
-* Summer 2015: Research Assistant
-  * GitHub University
-  * Duties included: Tagging issues
-  * Supervisor: Professor Git
+* Summer 2023: Research Assistant
+  * Sun Yat-sen University
+  * Duties included: Physic Simuation, AI for Physic
+  * Supervisor: Professor Yi Heng
+
+* Summer 2023: Co-Funder & Research Engineer
+  * MediumAI
+  * Duties included: RAG in medical documentation
+
   
 Skills
 ======
-* Skill 1
-* Skill 2
-  * Sub-skill 2.1
-  * Sub-skill 2.2
-  * Sub-skill 2.3
-* Skill 3
+* Python
+* C++
+* Most Hardware Tricks
 
 Publications
 ======
@@ -61,4 +59,4 @@ Teaching
   
 Service and leadership
 ======
-* Currently signed in to 43 different slack teams
+* Currently work as the co-funder of MediumAI
