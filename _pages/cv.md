@@ -25,38 +25,27 @@ Work experience
 
 * Summer 2023: Research Assistant
   * Sun Yat-sen University
-  * Duties included: Physic Simuation, AI for Physic
-  * Supervisor: Professor Yi Heng
+  * Topic: Physic Simuation, AI for Physic
 
 * Summer 2023: Co-Funder & Research Engineer
   * MediumAI
-  * Duties included: RAG in medical documentation
+  * Topic: RAG in medical documentation
 
+* Fall 2022: Computer Vision Engineer
+  * MAC RoboMaster
+  * Topic: Computer Vision in edge computing
   
 Skills
 ======
 * Python
 * C++
-* Most Hardware Tricks
+* PCB Design
+* Hardware Testing
+* Soldering (Micro SMT/Through Hole)
+* Microcontrollers (Pi/Ardiuno/ESP32)
 
-Publications
-======
-  <ul>{% for post in site.publications reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
-  
-Talks
-======
-  <ul>{% for post in site.talks reversed %}
-    {% include archive-single-talk-cv.html  %}
-  {% endfor %}</ul>
-  
-Teaching
-======
-  <ul>{% for post in site.teaching reversed %}
-    {% include archive-single-cv.html %}
-  {% endfor %}</ul>
   
 Service and leadership
 ======
 * Currently work as the co-funder of MediumAI
+* As IEEE McMaster Branch Executive, provide training on most of hardware skill.
