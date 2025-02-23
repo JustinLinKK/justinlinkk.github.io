@@ -1,5 +1,6 @@
 ---
 title: "Raspberry Pi Cluster v1"
+date: 2025-02-20
 excerpt: "A Pi Cluster running microk8s kubernete and slurm control system<br/><img src='/images/projects/piclusterv1/1.jpg'>"
 collection: projects
 ---
