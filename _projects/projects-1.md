@@ -1,7 +1,7 @@
 ---
 title: "Raspberry Pi Cluster v1"
 excerpt: "A Pi Cluster running microk8s kubernete and slurm control system<br/><img src='/images/projects/piclusterv1/1.jpg'>"
-collection: tech-gallery
+collection: projects
 ---
 
 # Project Title: Raspberry Pi Cluster v1 (2024 - Present)
