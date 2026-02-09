@@ -1,0 +1,34 @@
+3:I[4707,[],""]
+5:I[6423,[],""]
+6:I[9294,["972","static/chunks/972-0e1271ee876a9c14.js","137","static/chunks/137-93a29dfa8af4e6b4.js","185","static/chunks/app/layout-a1a7d41d0ed6db07.js"],"default"]
+7:I[2972,["972","static/chunks/972-0e1271ee876a9c14.js","308","static/chunks/app/blog/%5Bslug%5D/page-669636795b622632.js"],""]
+4:["slug","2025-06-04-log-post-1","d"]
+0:["bwuxX9rDPy3DgQbJNpYOB",[[["",{"children":["blog",{"children":[["slug","2025-06-04-log-post-1","d"],{"children":["__PAGE__?{\"slug\":\"2025-06-04-log-post-1\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["blog",{"children":[["slug","2025-06-04-log-post-1","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","blog","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","blog","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/d62a59e392fb9050.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L6",null,{"children":[["$","header",null,{"className":"mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-6","children":[["$","$L7",null,{"href":"/","className":"font-display text-[1.6rem] tracking-tight","children":"Justin Lin"}],["$","nav",null,{"className":"hidden flex-1 justify-end gap-10 text-[1.4rem] font-medium md:flex","children":[["$","$L7","/projects",{"href":"/projects","className":"hover:text-accent","children":"Projects"}],["$","$L7","/experience",{"href":"/experience","className":"hover:text-accent","children":"Experience"}],["$","$L7","/tech-gallery",{"href":"/tech-gallery","className":"hover:text-accent","children":"Tech Gallery"}],["$","$L7","/blog",{"href":"/blog","className":"hover:text-accent","children":"Blog"}],["$","$L7","/cv",{"href":"/cv","className":"hover:text-accent","children":"CV"}]]}],["$","div",null,{"className":"md:hidden text-sm","children":"Menu"}]]}],["$","main",null,{"className":"mx-auto w-full max-w-[1400px] px-6 pb-20 pt-6","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"mx-auto w-full max-w-7xl px-6 pb-12 pt-16 text-sm text-ink/70","children":["$","div",null,{"className":"flex flex-col gap-3 border-t border-ink/10 pt-6 md:flex-row md:items-center md:justify-between","children":[["$","p",null,{"children":"Built with Next.js, Tailwind, and HeroUI."}],["$","p",null,{"children":"Last updated 2026."}]]}]}]]}]}]}]],null],null],["$L8",null]]]]
+9:T4a7,<p>Too much for the past for one to memerize<br>
+Too many words remained for one to read through the lines<br>
+The ebb and flow of the crowd floods the word and paradise<br>
+Along the time<br>
+Every night brings a dream, but the day relentlessly keeps me awake<br>
+All the rest with be torn up whenever a choice is made<br>
+Every living soul in the fray striving for their own safe place<br>
+Life is too long to end at a grave<br>
+Just a drop of a water suffices<br>
+Encompassed and swallowed through space by the universe<br>
+Back to the source<br>
+Gone are those years living for a reason<br>
+Here it comes, the moment of the scene of lost and found<br>
+Personas played out on the stage<br>
+Will return to the self when there's a curtain call<br>
+Every night brings a dream, but the day relentlessly keeps me awake<br>
+All the rest will be torn up whenever a choice is made<br>
+Everyone has their own desire leading to the ultimate<br>
+Life is too long to end at a grave<br>
+Just a drop of a water suffices<br>
+Still, I wish to embrace the world with my thoughts
+A eulogy<br>
+Time to leave where I have stood so long<br>
+Letting you go, recover traces overlapped<br>
+Ends, then begins</p>
+2:["$","section",null,{"className":"rounded-3xl border border-ink/10 bg-white/70 p-6 shadow-[0_20px_60px_-40px_rgba(13,15,22,0.4)] backdrop-blur","children":[["$","div",null,{"className":"mb-6","children":[["$","h2",null,{"className":"font-display text-2xl font-semibold text-ink","children":"Regression"}],["$","p",null,{"className":"mt-2 max-w-2xl text-sm text-ink/70","children":"Jun 04, 2025"}]]}],[["$","div",null,{"className":"prose-content","dangerouslySetInnerHTML":{"__html":"$9"}}],["$","$L7",null,{"href":"/blog","className":"mt-8 inline-flex text-sm font-medium","children":"Back to blog"}]]]}]
+8:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Justin Lin | Portfolio"}],["$","meta","3",{"name":"description","content":"End-to-end systems across software and hardware."}]]
+1:null
