@@ -1,0 +1,104 @@
+3:I[4707,[],""]
+5:I[6423,[],""]
+6:I[9294,["972","static/chunks/972-0e1271ee876a9c14.js","137","static/chunks/137-93a29dfa8af4e6b4.js","185","static/chunks/app/layout-a1a7d41d0ed6db07.js"],"default"]
+7:I[2972,["972","static/chunks/972-0e1271ee876a9c14.js","101","static/chunks/app/projects/%5Bslug%5D/page-817bac1033c80365.js"],""]
+4:["slug","projects-1","d"]
+0:["bwuxX9rDPy3DgQbJNpYOB",[[["",{"children":["projects",{"children":[["slug","projects-1","d"],{"children":["__PAGE__?{\"slug\":\"projects-1\"}",{}]}]}]},"$undefined","$undefined",true],["",{"children":["projects",{"children":[["slug","projects-1","d"],{"children":["__PAGE__",{},[["$L1","$L2",null],null],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","projects","children","$4","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[null,["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children","projects","children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","notFoundStyles":"$undefined"}]],null]},[[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/d62a59e392fb9050.css","precedence":"next","crossOrigin":"$undefined"}]],["$","html",null,{"lang":"en","children":["$","body",null,{"children":["$","$L6",null,{"children":[["$","header",null,{"className":"mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-6","children":[["$","$L7",null,{"href":"/","className":"font-display text-[1.6rem] tracking-tight","children":"Justin Lin"}],["$","nav",null,{"className":"hidden flex-1 justify-end gap-10 text-[1.4rem] font-medium md:flex","children":[["$","$L7","/projects",{"href":"/projects","className":"hover:text-accent","children":"Projects"}],["$","$L7","/experience",{"href":"/experience","className":"hover:text-accent","children":"Experience"}],["$","$L7","/tech-gallery",{"href":"/tech-gallery","className":"hover:text-accent","children":"Tech Gallery"}],["$","$L7","/blog",{"href":"/blog","className":"hover:text-accent","children":"Blog"}],["$","$L7","/cv",{"href":"/cv","className":"hover:text-accent","children":"CV"}]]}],["$","div",null,{"className":"md:hidden text-sm","children":"Menu"}]]}],["$","main",null,{"className":"mx-auto w-full max-w-[1400px] px-6 pb-20 pt-6","children":["$","$L3",null,{"parallelRouterKey":"children","segmentPath":["children"],"error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L5",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":"404"}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],"notFoundStyles":[]}]}],["$","footer",null,{"className":"mx-auto w-full max-w-7xl px-6 pb-12 pt-16 text-sm text-ink/70","children":["$","div",null,{"className":"flex flex-col gap-3 border-t border-ink/10 pt-6 md:flex-row md:items-center md:justify-between","children":[["$","p",null,{"children":"Built with Next.js, Tailwind, and HeroUI."}],["$","p",null,{"children":"Last updated 2026."}]]}]}]]}]}]}]],null],null],["$L8",null]]]]
+9:T199c,<h1>Project Title: Raspberry Pi Cluster v1</h1>
+<h2>Project Overview</h2>
+<p>The Raspberry Pi Cluster v1 is a custom-built, seven-node computing cluster designed to explore distributed computing, parallel processing, and web hosting capabilities. This project integrates various Raspberry Pi models into a cohesive system, utilizing SLURM and Kubernetes for efficient resource management and task scheduling.</p>
+<h2>Objectives</h2>
+<ul>
+<li><strong>Distributed Computing:</strong> Leverage SLURM and OpenMPI to enable parallel processing across multiple nodes, facilitating the execution of computational tasks that benefit from distributed architectures.</li>
+<li><strong>Web Hosting:</strong> Deploy Kubernetes to manage containerized applications, specifically hosting the IEEE McMaster Student Branch website, ensuring scalability and reliability.</li>
+<li><strong>Educational Exploration:</strong> Provide a hands-on platform for learning about cluster computing, network configuration, and system administration.</li>
+</ul>
+<h2>Hardware Components</h2>
+<ul>
+<li><strong>Master Node:</strong> 1 x Raspberry Pi 4 Model B with 4GB RAM.</li>
+<li><strong>Compute Nodes:</strong> 6 x Raspberry Pi 3 Model B with 1GB RAM each.</li>
+<li><strong>Networking:</strong> A managed Ethernet switch to facilitate high-speed communication between nodes.</li>
+<li><strong>Power Supply:</strong> Centralized power distribution system ensuring consistent and reliable power to all nodes.</li>
+<li><strong>Enclosure:</strong> Custom CAD-designed shells for housing the Raspberry Pi units, optimizing space and airflow.</li>
+</ul>
+<h2>Software Configuration</h2>
+<ul>
+<li><strong>Operating System:</strong> Each node runs a Linux-based OS optimized for ARM architecture.</li>
+<li><strong>Cluster Management:</strong>
+<ul>
+<li><em>SLURM:</em> Implemented for job scheduling and workload management, enabling efficient distribution of computational tasks across the cluster.</li>
+<li><em>OpenMPI:</em> Installed to support the development and execution of parallel applications using the Message Passing Interface (MPI) standard.</li>
+</ul>
+</li>
+<li><strong>Container Orchestration:</strong>
+<ul>
+<li><em>Kubernetes:</em> Deployed to manage containerized applications, providing automated deployment, scaling, and operation of application containers.</li>
+</ul>
+</li>
+<li><strong>Networking Services:</strong>
+<ul>
+<li><em>DHCP Server:</em> Configured on the master node to assign IP addresses to compute nodes, ensuring seamless network integration.</li>
+</ul>
+</li>
+</ul>
+<h2>Implementation Details</h2>
+<ol>
+<li>
+<p><strong>Hardware Assembly:</strong></p>
+<ul>
+<li>Designed and 3D-printed custom enclosures for each Raspberry Pi to ensure secure mounting and adequate cooling.</li>
+<li>Connected all nodes to a central managed Ethernet switch to facilitate efficient inter-node communication.</li>
+<li>Established a centralized power supply system capable of delivering consistent power to all nodes, considering the specific power requirements of Raspberry Pi devices.</li>
+</ul>
+</li>
+<li>
+<p><strong>Operating System Installation:</strong></p>
+<ul>
+<li>Installed a lightweight Linux distribution on each Raspberry Pi, optimizing system performance and resource utilization.</li>
+<li>Configured SSH access for remote management and streamlined administrative tasks.</li>
+</ul>
+</li>
+<li>
+<p><strong>Network Configuration:</strong></p>
+<ul>
+<li>Set up a DHCP server on the master node to dynamically assign IP addresses to each compute node, simplifying network management.</li>
+<li>Ensured all nodes are on the same subnet to promote efficient communication and data transfer.</li>
+</ul>
+</li>
+<li>
+<p><strong>Cluster Software Deployment:</strong></p>
+<ul>
+<li>Installed and configured SLURM on all nodes to manage job scheduling and resource allocation effectively.</li>
+<li>Deployed the OpenMPI library to support the development and execution of parallel applications across the cluster.</li>
+</ul>
+</li>
+<li>
+<p><strong>Container Orchestration Setup:</strong></p>
+<ul>
+<li>Installed Kubernetes on the cluster to orchestrate containerized applications, providing a robust platform for deploying and managing services.</li>
+<li>Deployed the IEEE McMaster Student Branch website within the Kubernetes environment, ensuring high availability and scalability.</li>
+</ul>
+</li>
+</ol>
+<h2>Challenges and Resolutions</h2>
+<ul>
+<li><strong>Hardware Compatibility:</strong> Addressed differences between Raspberry Pi 4 and Raspberry Pi 3 models by ensuring uniform operating system configurations and compatible software versions across all nodes.</li>
+<li><strong>Dependency Management:</strong> Resolved issues with missing packages and version conflicts by meticulously managing source code dependencies and utilizing virtual environments where necessary.</li>
+<li><strong>Network Stability:</strong> Ensured reliable network performance by configuring quality of service (QoS) settings on the managed switch and monitoring network traffic to prevent bottlenecks.</li>
+</ul>
+<h2>Outcomes</h2>
+<ul>
+<li><strong>Enhanced Computational Capability:</strong> Successfully established a functional Raspberry Pi cluster capable of handling parallel processing tasks, thereby increasing computational efficiency.</li>
+<li><strong>Reliable Web Hosting Platform:</strong> Deployed the IEEE McMaster Student Branch website on the cluster, demonstrating the system's capability to manage real-world web applications.</li>
+<li><strong>Educational Advancement:</strong> Gained practical experience in cluster assembly, network configuration, and the deployment of distributed computing frameworks, contributing to a deeper understanding of scalable computing solutions.</li>
+</ul>
+<h2>Future Plans</h2>
+<ul>
+<li><strong>Performance Optimization:</strong> Analyze the cluster's performance metrics to identify and address potential bottlenecks, aiming to enhance processing speed and efficiency.</li>
+<li><strong>Scalability Testing:</strong> Explore the feasibility of expanding the cluster by adding more nodes and evaluating the impact on performance and resource management.</li>
+<li><strong>Diverse Workload Integration:</strong> Experiment with running a variety of workloads, including data analysis, machine learning tasks, and additional web services, to assess the cluster's versatility and robustness.</li>
+</ul>
+<p>This project serves as a foundational platform for ongoing exploration and development in the fields of distributed computing and system administration.</p>
+2:["$","section",null,{"className":"rounded-3xl border border-ink/10 bg-white/70 p-6 shadow-[0_20px_60px_-40px_rgba(13,15,22,0.4)] backdrop-blur","children":[["$","div",null,{"className":"mb-6","children":[["$","h2",null,{"className":"font-display text-2xl font-semibold text-ink","children":"Raspberry Pi Cluster v1"}],["$","p",null,{"className":"mt-2 max-w-2xl text-sm text-ink/70","children":"Feb 20, 2025"}]]}],[["$","div",null,{"className":"prose-content","dangerouslySetInnerHTML":{"__html":"$9"}}],["$","$L7",null,{"href":"/projects","className":"mt-8 inline-flex text-sm font-medium","children":"Back to projects"}]]]}]
+8:[["$","meta","0",{"name":"viewport","content":"width=device-width, initial-scale=1"}],["$","meta","1",{"charSet":"utf-8"}],["$","title","2",{"children":"Justin Lin | Portfolio"}],["$","meta","3",{"name":"description","content":"End-to-end systems across software and hardware."}]]
+1:null
