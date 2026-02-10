@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paper Notes: Building Secure High-Performance Web Services with OKWS | Justin Lin</title>
+    <meta name="description" content="Original paper: Building Secure High-Performance Web Services with OKWS(https://www.usenix.org/legacy/event/sec04/tech/fullpapers/krohn/krohn.pdf)" />
+    <link rel="stylesheet" href="/_next/static/css/d62a59e392fb9050.css" />
+  </head>
+  <body>
+    <div data-overlay-container="true">
+      <header class="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-6">
+  <a class="font-display text-[1.6rem] tracking-tight" href="/">Justin Lin</a>
+  <nav class="hidden flex-1 justify-end gap-10 text-[1.4rem] font-medium md:flex">
+    <a class="hover:text-accent" href="/projects/">Projects</a>
+    <a class="hover:text-accent" href="/experience/">Experience</a>
+    <a class="hover:text-accent" href="/tech-gallery/">Tech Gallery</a>
+    <a class="hover:text-accent" href="/blog/">Blog</a>
+    <a class="hover:text-accent" href="/cv/">CV</a>
+  </nav>
+  <div class="md:hidden text-sm">Menu</div>
+</header>
+      <main class="mx-auto w-full max-w-[1400px] px-6 pb-20 pt-6">
+        <section class="rounded-3xl border border-ink/10 bg-white/70 p-6 shadow-[0_20px_60px_-40px_rgba(13,15,22,0.4)] backdrop-blur">
+  <div class="mb-6">
+    <h2 class="font-display text-2xl font-semibold text-ink">Paper Notes: Building Secure High-Performance Web Services with OKWS</h2>
+    <p class="mt-2 max-w-2xl text-sm text-ink/70">Feb 10, 2026</p>
+  </div>
+  <div class="prose-content"><p>Original paper: <a href="https://www.usenix.org/legacy/event/sec04/tech/full_papers/krohn/krohn.pdf">Building Secure High-Performance Web Services with OKWS</a></p>
+<h2>TL;DR</h2>
+<ul>
+<li>The paper tackles the problem of securing dynamic web services in the presence of inevitable bugs, without sacrificing performance.</li>
+<li>It proposes OKWS, a web service architecture that enforces compromise containment through strict process isolation and least-privilege design.</li>
+<li>The biggest takeaway is that security isolation, when enforced architecturally rather than conventionally, can <em>improve</em> performance instead of degrading it.</li>
+</ul>
+<h2>Bibliographic Snapshot</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Citation</td>
+<td><code>Krohn, USENIX Security 2004</code></td>
+</tr>
+<tr>
+<td>Keywords</td>
+<td>web security, process isolation, least privilege, performance</td>
+</tr>
+<tr>
+<td>Dataset / Benchmarks</td>
+<td>Custom “null service” dynamic workload</td>
+</tr>
+<tr>
+<td>Code / Repo</td>
+<td><a href="http://www.okws.org">http://www.okws.org</a></td>
+</tr>
+</tbody>
+</table>
+<h2>Problem Statement</h2>
+<p>Dynamic web servers are historically vulnerable because they combine unrelated services, broad filesystem access, and unrestricted database interfaces within shared address spaces. Bugs in application logic, scripting languages, or server cores routinely lead to full-system compromise. The paper assumes attackers <em>will</em> gain code execution and focuses on limiting the damage of such compromises. The key constraint is achieving strong isolation without incurring the performance penalties of per-user or per-request process models.</p>
+<h2>Core Idea</h2>
+<p>OKWS is a security-first web service framework that aligns <strong>process boundaries, privilege boundaries, and service boundaries</strong>.</p>
+<ol>
+<li><strong>Process-per-service model</strong>: Each logical web service runs in its own OS process.</li>
+<li><strong>Privilege separation</strong>: Services run as unique, unprivileged users inside chroot jails with near-zero filesystem access.</li>
+<li><strong>Structured database access</strong>: Services interact with databases only through RPC-based proxies, not raw SQL clients.</li>
+<li><strong>Small, fixed process pool</strong>: The number of processes scales with services, not connections or users, reducing context switching and memory pressure.</li>
+</ol>
+<h2>Visual / Diagram Notes</h2>
+<ul>
+<li>Dependency graphs comparing Apache, Flash, Haboob, strict per-user isolation, and OKWS were particularly clarifying.</li>
+<li>The OKWS graph shows compromise impact confined to a single service node, unlike Apache’s fully connected dependency graph.</li>
+<li>Performance plots highlight throughput degradation as process counts increase, reinforcing the fixed-pool design choice.</li>
+</ul>
+<h2>Key Results</h2>
+<ul>
+<li>OKWS achieves significantly higher throughput than Apache+PHP, Flash, and Haboob on dynamic workloads.</li>
+<li>Context switches scale poorly with large process pools; OKWS avoids this by design.</li>
+<li>Performance degrades only modestly when scaling from one service to many services.</li>
+<li>Limitations acknowledged: C++ memory safety risks, shared in-memory state across users within a service, and reliance on a trusted kernel.</li>
+</ul>
+<h2>Personal Analysis</h2>
+<p><strong>What worked</strong>:<br>
+The architectural enforcement of least privilege is elegant and practical. The idea that isolation can <em>reduce</em> overhead by simplifying synchronization and resource management strongly aligns with modern cloud observations.</p>
+<p><strong>What puzzled you</strong>:<br>
+The reliance on C++ feels at odds with the security goals, even for 2004. Also, in-memory user-state sharing within a service remains a notable attack surface that modern per-request or per-tenant isolation often avoids.</p>
+<h2>Connections &amp; Related Work</h2>
+<ul>
+<li>Conceptually aligns with microVM designs such as Firecracker, which similarly emphasize blast-radius reduction.</li>
+<li>Anticipates modern container and microservice architectures, though OKWS enforces isolation by construction rather than policy.</li>
+<li>Contrasts with Apache/PHP models that rely heavily on developer discipline and configuration correctness.</li>
+</ul>
+<h2>Implementation Sketch</h2>
+<p>If reproducing the core ideas today:</p>
+<ul>
+<li>Use containers or microVMs to enforce service-level isolation.</li>
+<li>Implement strict RBAC and service-specific database proxies.</li>
+<li>Separate static content delivery via CDN or dedicated edge services.</li>
+<li>Maintain a small, fixed pool of long-lived service instances.</li>
+</ul>
+<h2>Open Questions / Next Actions</h2>
+<ul>
+<li>How much of OKWS’s security guarantee is lost when isolation is policy-based rather than architectural?</li>
+<li>Would a modern OKWS redesign prefer containers, microVMs, or language-level isolation?</li>
+<li>Explore comparisons between OKWS, Kubernetes best practices, and Firecracker in high-assurance cloud environments.</li>
+</ul>
+<h2>Glossary (optional)</h2>
+<ul>
+<li><strong>Least Privilege</strong>: Granting a process only the permissions it strictly needs.</li>
+<li><strong>Compromise Containment</strong>: Limiting the impact radius after a security breach.</li>
+<li><strong>Process Isolation</strong>: Using OS processes to enforce memory and privilege boundaries.</li>
+</ul>
+</div>
+  <a class="mt-8 inline-flex text-sm font-medium" href="/blog/">Back to blog</a>
+</section>
+      </main>
+      <footer class="mx-auto w-full max-w-7xl px-6 pb-12 pt-16 text-sm text-ink/70">
+  <div class="flex flex-col gap-3 border-t border-ink/10 pt-6 md:flex-row md:items-center md:justify-between">
+    <p>Built with static generation.</p>
+    <p>Last updated 2026.</p>
+  </div>
+</footer>
+    </div>
+  </body>
+</html>

@@ -14,6 +14,7 @@ The blog is sourced from markdown files in `content/posts`. Each time you add or
    yarn generate:blog
    ```
 4. Commit both the markdown and the generated HTML so GitHub Pages stays in sync.
+  5. Future-dated posts are hidden automatically; export `INCLUDE_FUTURE=true` if you need to preview them locally.
 
 ## Development (Local)
 
@@ -26,7 +27,7 @@ The blog is sourced from markdown files in `content/posts`. Each time you add or
 
 ## Testing / Validation
 
-- Regenerate after every edit:
+- Regenerate after every edit (use `INCLUDE_FUTURE=true yarn generate:blog` if you need to surface scheduled posts temporarily):
   ```bash
   yarn generate:blog
   ```

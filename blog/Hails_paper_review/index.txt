@@ -1,7 +1,7 @@
 {
   "title": "Paper Notes: Hails – Protecting Data Privacy in Untrusted Web Applications",
   "date": "2026-02-10T00:00:00.000Z",
-  "summary": " TL;DR",
+  "summary": "Original paper: Hails: Protecting Data Privacy in Untrusted Web Applications(https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentati...",
   "tags": [
     "research-notes",
     "security",

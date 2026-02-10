@@ -1,23 +1,11 @@
 {
-  "generatedAt": "2026-02-10T01:07:45.313Z",
+  "generatedAt": "2026-02-10T01:53:14.056Z",
   "total": 3,
   "posts": [
     {
-      "title": "Future Blog Post",
-      "date": "2199-01-01T00:00:00.000Z",
-      "summary": "This post will show up by default. To disable scheduling of future posts, edit config.yml and set future: false.",
-      "slug": "2199-01-01-future-post",
-      "tags": [
-        "cool posts",
-        "category1",
-        "category2"
-      ],
-      "path": "/blog/2199-01-01-future-post/"
-    },
-    {
       "title": "Paper Notes: Hails – Protecting Data Privacy in Untrusted Web Applications",
       "date": "2026-02-10T00:00:00.000Z",
-      "summary": " TL;DR",
+      "summary": "Original paper: Hails: Protecting Data Privacy in Untrusted Web Applications(https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentati...",
       "slug": "Hails_paper_review",
       "tags": [
         "research-notes",
@@ -27,6 +15,18 @@
         "privacy"
       ],
       "path": "/blog/Hails_paper_review/"
+    },
+    {
+      "title": "Paper Notes: Building Secure High-Performance Web Services with OKWS",
+      "date": "2026-02-10T00:00:00.000Z",
+      "summary": "Original paper: Building Secure High-Performance Web Services with OKWS(https://www.usenix.org/legacy/event/sec04/tech/fullpapers/krohn/krohn.pdf)",
+      "slug": "okws-paper-review",
+      "tags": [
+        "research-notes",
+        "reading-list",
+        "knowledge-base"
+      ],
+      "path": "/blog/okws-paper-review/"
     },
     {
       "title": "Regression",
