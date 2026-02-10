@@ -1,0 +1,11 @@
+{
+  "title": "Paper Notes: Building Secure High-Performance Web Services with OKWS",
+  "date": "2026-02-10T00:00:00.000Z",
+  "summary": " TL;DR",
+  "tags": [
+    "research-notes",
+    "reading-list",
+    "knowledge-base"
+  ],
+  "path": "/blog/okws-paper-review/"
+}
