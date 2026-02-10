@@ -11,10 +11,10 @@ paper:
   title: 'Building Secure High-Performance Web Services with OKWS'
   authors: 'Maxwell Krohn'
   venue: 'USENIX Security Symposium, 2004'
-  link: 'https://www.usenix.org/legacy/event/sec04/tech/full_papers/krohn/krohn.pdf'
+  link: 'https://vm-web.pdos.csail.mit.edu/papers/okws-usenix04.pdf'
 ---
 
-Original paper: [Building Secure High-Performance Web Services with OKWS](https://www.usenix.org/legacy/event/sec04/tech/full_papers/krohn/krohn.pdf)
+Original paper: [Building Secure High-Performance Web Services with OKWS](https://vm-web.pdos.csail.mit.edu/papers/okws-usenix04.pdf)
 
 ## TL;DR
 - The paper tackles the problem of securing dynamic web services in the presence of inevitable bugs, without sacrificing performance.

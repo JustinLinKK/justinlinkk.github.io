@@ -12,10 +12,10 @@ paper:
   title: 'Hails: Protecting Data Privacy in Untrusted Web Applications'
   authors: 'Daniel B. Giffin, Amit Levy, Deian Stefan, Alejandro Russo, David Terei, David Mazières, John C. Mitchell'
   venue: 'USENIX Security, 2012'
-  link: 'https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/giffin'
+  link: 'https://cseweb.ucsd.edu/~dstefan/pubs/giffin:2012:hails.pdf'
 ---
 
-Original paper: [Hails: Protecting Data Privacy in Untrusted Web Applications](https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/giffin)
+Original paper: [Hails: Protecting Data Privacy in Untrusted Web Applications](https://cseweb.ucsd.edu/~dstefan/pubs/giffin:2012:hails.pdf)
 
 ## TL;DR
 - The paper addresses the problem of protecting user data on web platforms that run untrusted third-party applications.
