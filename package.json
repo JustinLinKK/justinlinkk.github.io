@@ -1,13 +1,39 @@
 {
-  "name": "justinlinkk-site",
+  "name": "justinlin-portfolio",
   "version": "1.0.0",
   "private": true,
+  "description": "TypeScript portfolio site using Next.js, Tailwind, and HeroUI.",
   "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
     "generate:blog": "node scripts/generate-blog.js"
   },
   "dependencies": {
+    "@heroui/react": "^2.1.0",
     "date-fns": "^3.3.1",
+    "framer-motion": "^11.5.6",
     "gray-matter": "^4.0.3",
-    "markdown-it": "^14.1.0"
-  }
+    "markdown-it": "^14.1.0",
+    "next": "^14.2.6",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "remark": "^15.0.1",
+    "remark-gfm": "^4.0.0",
+    "remark-html": "^16.0.1"
+  },
+  "devDependencies": {
+    "@tailwindcss/typography": "^0.5.14",
+    "@types/node": "^20.14.10",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "autoprefixer": "^10.4.19",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "^14.2.6",
+    "postcss": "^8.4.38",
+    "tailwindcss": "^3.4.7",
+    "typescript": "^5.5.4"
+  },
+  "packageManager": "yarn@1.22.22"
 }
