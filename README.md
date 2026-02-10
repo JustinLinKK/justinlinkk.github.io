@@ -10,36 +10,40 @@ This repo hosts Justin Lin's personal site (projects, experience, and research n
 - **date-fns** for consistent formatting
 - **GitHub Pages** for hosting
 
-## Content Workflow
+## Setup & Content workflow
 
-1. Add or edit markdown files under `content/posts`. Include `title`, `date`, optional tags, and set `draft: true` to keep a note private.
-2. Generate or refresh the static HTML:
+- **Setup (first time):** install dependencies with `yarn install` (or `npm ci` for CI). Use a recent Node LTS (Node 18+ recommended).
+
+- **Edit content:** add or edit Markdown files under `content/posts`.
+   - Frontmatter: include `title`, `date` (ISO 8601 recommended), optional `tags` (array), and `draft: true` to keep a note private.
+   - Filename guidance: use `YYYY-MM-DD-my-post.md` for clarity, though the generator reads frontmatter first.
+
+- **Generate static output:** run:
    ```bash
-   yarn install           # first time only
    yarn generate:blog
    ```
-   Use `INCLUDE_FUTURE=true yarn generate:blog` if you want future-dated posts to appear locally.
-3. Commit the modified `content/` and generated `blog/` artifacts.
+   - To include future-dated posts locally, run:
+   ```bash
+   INCLUDE_FUTURE=true yarn generate:blog
+   ```
+   - The command reads `content/` and writes generated HTML into the `blog/` folder.
 
-## Local Preview / Testing
+- **Preview locally:** serve the repository root and open http://localhost:3000:
+   ```bash
+   npx serve . -l 3000
+   # or: python3 -m http.server 3000
+   ```
 
-The repo already contains the production-ready HTML, so you only need a static server:
+- **Workflow notes:**
+   - Re-run `yarn generate:blog` after every markdown change before refreshing the browser.
+   - Keep private drafts by setting `draft: true`; unset it to publish.
+   - Commit both your edited `content/` files and the generated `blog/` artifacts when you want the site output included in the repo.
 
-```bash
-npx serve . -l 3000
-# or: python3 -m http.server 3000
-```
-
-Visit <http://localhost:3000> and click through `/blog`, `/projects`, `/tech-gallery`, etc. Re-run `yarn generate:blog` after every markdown change, then refresh the browser.
+Visit `/blog`, `/projects`, `/tech-gallery`, etc. after serving to verify pages.
 
 ## Deployment
 
-The site can be deployed via either:
-
-1. **Direct branch hosting** – push the updated `production-pages` branch to deploy live. GitHub Pages serves the files as-is.
-2. **Test branch workflow** – use the `test-pages` branch for local testing and content development. After running `yarn generate:blog`, commit changes to `test-pages` for preview before merging to `production-pages`.
-
-Remember to keep `.gitignore` entries (e.g., `node_modules`, `.next`, `.turbo`) untouched so transient build files never reach the repo.
+The site can be deployed via my **pi-clusterv2** 
 
 ## Summary
 
