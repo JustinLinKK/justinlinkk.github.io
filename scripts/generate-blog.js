@@ -12,12 +12,14 @@ const CSS_BUNDLE = '/_next/static/css/d62a59e392fb9050.css';
 const SITE_TITLE = 'Justin Lin | Portfolio';
 const SITE_DESCRIPTION = 'End-to-end systems across software and hardware.';
 const md = new MarkdownIt({ html: false, linkify: true, typographer: true, breaks: true });
+const INCLUDE_FUTURE = process.env.INCLUDE_FUTURE === 'true';
 
 async function main() {
   const posts = await loadPosts();
   await fs.mkdir(BLOG_DIR, { recursive: true });
 
   await Promise.all(posts.map(writePostPage));
+  await pruneOrphanPostDirs(posts.map((post) => post.slug));
   await writeIndexPage(posts);
   await writeIndexManifest(posts);
 
@@ -36,6 +38,7 @@ async function loadPosts() {
   }
 
   const entries = [];
+  const now = new Date();
 
   for (const file of files) {
     if (!file.endsWith('.md')) continue;
@@ -53,6 +56,11 @@ async function loadPosts() {
     }
 
     const date = coerceDate(data.date, filePath);
+    if (!INCLUDE_FUTURE && date > now) {
+      console.log(`Skipping future-dated post (set INCLUDE_FUTURE=true to include): ${slug}`);
+      continue;
+    }
+
     const formattedDate = format(date, 'MMM dd, yyyy');
     const contentHtml = md.render(parsed.content.trim());
     const summary = buildSummary(data.description, parsed.content);
@@ -232,6 +240,32 @@ function renderPostBody(post) {
   <div class="prose-content">${post.contentHtml}</div>
   <a class="mt-8 inline-flex text-sm font-medium" href="/blog/">Back to blog</a>
 </section>`;
+}
+
+async function pruneOrphanPostDirs(validSlugs) {
+  const keep = new Set(validSlugs);
+  let entries = [];
+  try {
+    entries = await fs.readdir(BLOG_DIR, { withFileTypes: true });
+  } catch (err) {
+    if (err.code === 'ENOENT') return;
+    throw err;
+  }
+
+  const removals = entries
+    .filter((entry) => entry.isDirectory() && !keep.has(entry.name))
+    .map(async (entry) => {
+      try {
+        await fs.access(path.join(BLOG_DIR, entry.name, 'index.txt'));
+      } catch {
+        return null;
+      }
+      await fs.rm(path.join(BLOG_DIR, entry.name), { recursive: true, force: true });
+      console.log(`Removed unpublished post directory: ${entry.name}`);
+      return null;
+    });
+
+  await Promise.all(removals);
 }
 
 function escapeHtml(value) {
