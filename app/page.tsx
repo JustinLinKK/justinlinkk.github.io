@@ -127,9 +127,7 @@ export default async function HomePage() {
                 className={`h-2.5 w-2.5 rounded-full ${
                   nodeStatusLevel === "crit"
                     ? "bg-red-500"
-                    : nodeStatusLevel === "warn"
-                      ? "bg-amber-400"
-                      : "bg-emerald-500"
+                    : "bg-emerald-500"
                 }`}
               />
             </div>
