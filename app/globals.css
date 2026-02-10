@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  background-color: #ebf4ff;
+}
+
+body {
+  @apply font-body text-ink antialiased;
+  background:
+    radial-gradient(1200px 600px at 10% -10%, rgba(56, 189, 248, 0.2), transparent 60%),
+    radial-gradient(900px 500px at 90% 10%, rgba(96, 165, 250, 0.18), transparent 55%),
+    #ebf4ff;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(56, 189, 248, 0.3);
+}
+
+a {
+  @apply text-ink underline-offset-4 transition;
+}
+
+a:hover {
+  @apply text-accent;
+}
+
+.prose-content {
+  @apply prose prose-lg max-w-none;
+}
+
+.prose-content h1,
+.prose-content h2,
+.prose-content h3 {
+  @apply font-display;
+}
+
+.excerpt-content img {
+  @apply mt-3 h-36 w-full rounded-xl object-cover;
+}

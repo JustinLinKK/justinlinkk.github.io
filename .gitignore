@@ -1,24 +1,26 @@
 # dependencies
-/node_modules
-/.pnp
+node_modules/
+.pnp
 .pnp.js
 package-lock.json
 pnpm-lock.yaml
 npm-shrinkwrap.json
+yarn.lock
+old_build/
 
-# build / deploy caches
-/.turbo
+# build output
+.next/
+out/
+build/
+
+# caches
+.turbo/
 .eslintcache
-.vercel
+.vercel/
 coverage/
-
-# Next.js
-/.next
-/out
-.next/cache
-
-# production
-/build
+.cache/
+.parcel-cache/
+.next/cache/
 
 # logs
 npm-debug.log*
@@ -29,14 +31,16 @@ pnpm-debug.log*
 # env files
 .env
 .env.*
+!.env.example
 
 # misc
 .DS_Store
+Thumbs.db
 *.tsbuildinfo
 
 # editor
-.vscode
-.idea
+.vscode/
+.idea/
 
 # local history
-.history
+.history/
