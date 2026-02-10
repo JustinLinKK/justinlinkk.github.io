@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function ContentCard({
@@ -33,8 +34,14 @@ export default function ContentCard({
       className={`content-card group flex h-full flex-col justify-between rounded-2xl border border-ink/10 bg-white/80 p-5 transition hover:-translate-y-1 hover:border-accent/50 hover:shadow-lg ${className ?? ""}`}
     >
       {thumbnailSrc ? (
-        <div className="content-card__media">
-          <img src={thumbnailSrc} alt={title} loading="lazy" />
+        <div className="content-card__media relative w-full h-48 overflow-hidden rounded-md">
+          <Image
+            src={thumbnailSrc}
+            alt={title}
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 33vw"
+          />
         </div>
       ) : null}
       <div className="space-y-3">
