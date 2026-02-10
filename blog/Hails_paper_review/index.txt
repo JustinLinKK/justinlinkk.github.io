@@ -1,0 +1,13 @@
+{
+  "title": "Paper Notes: Hails – Protecting Data Privacy in Untrusted Web Applications",
+  "date": "2026-02-10T00:00:00.000Z",
+  "summary": " TL;DR",
+  "tags": [
+    "research-notes",
+    "security",
+    "information-flow",
+    "web-platforms",
+    "privacy"
+  ],
+  "path": "/blog/Hails_paper_review/"
+}

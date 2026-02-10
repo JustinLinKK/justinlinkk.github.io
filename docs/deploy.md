@@ -1,32 +1,41 @@
 # Development, Testing, and Production Deploy
 
+## Blog Generation Workflow
+
+The blog is sourced from markdown files in `content/posts`. Each time you add or edit a post:
+
+1. Ensure the front matter includes `title` and `date`. Add `draft: true` to keep a note private.
+2. Install dependencies once per environment:
+   ```bash
+   yarn install
+   ```
+3. Convert markdown into the static HTML under `blog/`:
+   ```bash
+   yarn generate:blog
+   ```
+4. Commit both the markdown and the generated HTML so GitHub Pages stays in sync.
+
 ## Development (Local)
 
-- Install dependencies:
+- Generate the blog (steps above) whenever markdown changes.
+- Serve the static site from the repo root:
   ```bash
-  yarn install
+  npx serve . -l 3000
   ```
-- Run the dev server:
-  ```bash
-  yarn dev
-  ```
-- Open in browser:
-  ```
-  http://localhost:3000
-  ```
+- Navigate to http://localhost:3000 and click through `/blog` + the individual posts.
 
 ## Testing / Validation
 
-- Lint:
+- Regenerate after every edit:
   ```bash
-  yarn lint
+  yarn generate:blog
   ```
-- Build (static export output is in ./out):
+- Smoke-test the exact files that GitHub Pages will host:
   ```bash
-  yarn build
+  npx serve . -l 4000
   ```
 
-## Production Deploy (GitHub Pages via gh-pages branch)
+## Production Deploy (GitHub Pages)
 
 ### One-time setup
 
@@ -37,25 +46,25 @@
 
 ### Manual deploy steps
 
-1) Build the static export:
-   ```bash
-   yarn install
-   yarn build
-   ```
-2) Publish ./out to gh-pages:
-   ```bash
-   git checkout --orphan gh-pages
-   git rm -rf .
-   cp -R out/* .
-   touch .nojekyll
-   git add .
-   git commit -m "Deploy to GitHub Pages"
-   git push -u origin gh-pages --force
-   git checkout master
-   ```
+1. Update markdown and run `yarn generate:blog`.
+2. Commit the updated `content/` + `blog/` directories on `production-pages` (or your working branch) and push. If GitHub Pages already reads from that branch, you are finished.
+3. To continue using a separate `gh-pages` branch, mirror the working tree into a temporary directory and force-push:
+  ```bash
+  tmp_dir=$(mktemp -d)
+  rsync -av --delete --exclude '.git' ./ "$tmp_dir/"
+  git checkout --orphan gh-pages
+  git rm -rf .
+  rsync -av "$tmp_dir/" ./
+  touch .nojekyll
+  git add .
+  git commit -m "Deploy to GitHub Pages"
+  git push -u origin gh-pages --force
+  git checkout production-pages
+  rm -rf "$tmp_dir"
+  ```
 
 ### Notes
 
 - The deployed site URL:
   - https://justinlinkk.github.io/
-- If you automate deployment later, keep gh-pages as the target branch.
+- Always run `yarn generate:blog` before publishing so the static HTML matches the markdown.
