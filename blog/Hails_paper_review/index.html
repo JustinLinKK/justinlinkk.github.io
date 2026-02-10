@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Paper Notes: Hails – Protecting Data Privacy in Untrusted Web Applications | Justin Lin</title>
+    <meta name="description" content=" TL;DR" />
+    <link rel="stylesheet" href="/_next/static/css/d62a59e392fb9050.css" />
+  </head>
+  <body>
+    <div data-overlay-container="true">
+      <header class="mx-auto flex w-full max-w-[1400px] items-center justify-between px-6 py-6">
+  <a class="font-display text-[1.6rem] tracking-tight" href="/">Justin Lin</a>
+  <nav class="hidden flex-1 justify-end gap-10 text-[1.4rem] font-medium md:flex">
+    <a class="hover:text-accent" href="/projects/">Projects</a>
+    <a class="hover:text-accent" href="/experience/">Experience</a>
+    <a class="hover:text-accent" href="/tech-gallery/">Tech Gallery</a>
+    <a class="hover:text-accent" href="/blog/">Blog</a>
+    <a class="hover:text-accent" href="/cv/">CV</a>
+  </nav>
+  <div class="md:hidden text-sm">Menu</div>
+</header>
+      <main class="mx-auto w-full max-w-[1400px] px-6 pb-20 pt-6">
+        <section class="rounded-3xl border border-ink/10 bg-white/70 p-6 shadow-[0_20px_60px_-40px_rgba(13,15,22,0.4)] backdrop-blur">
+  <div class="mb-6">
+    <h2 class="font-display text-2xl font-semibold text-ink">Paper Notes: Hails – Protecting Data Privacy in Untrusted Web Applications</h2>
+    <p class="mt-2 max-w-2xl text-sm text-ink/70">Feb 10, 2026</p>
+  </div>
+  <div class="prose-content"><h2>TL;DR</h2>
+<ul>
+<li>The paper addresses the problem of protecting user data on web platforms that run untrusted third-party applications.</li>
+<li>Hails enforces mandatory, end-to-end information-flow control by attaching security policies directly to data rather than relying on role-based access checks.</li>
+<li>The biggest takeaway is that controlling <em>how data flows after access</em> is more powerful than controlling access alone.</li>
+</ul>
+<hr>
+<h2>Bibliographic Snapshot</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Detail</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Citation</td>
+<td>Giffin et al., USENIX Security 2012</td>
+</tr>
+<tr>
+<td>Keywords</td>
+<td>information-flow control, web security, MAC, privacy</td>
+</tr>
+<tr>
+<td>Dataset / Benchmarks</td>
+<td>GitStar production deployment, microbenchmarks</td>
+</tr>
+<tr>
+<td>Code / Repo</td>
+<td>Not publicly maintained</td>
+</tr>
+</tbody>
+</table>
+<hr>
+<h2>Problem Statement</h2>
+<p>Modern web platforms rely heavily on third-party applications, but traditional role-based access control only governs who can initially access data, not how that data is used afterward. Once access is granted, platforms have little ability to prevent data leakage, whether accidental or malicious. This is especially problematic for privacy-sensitive data such as personal, social, or medical information. The paper seeks to provide strong, system-enforced privacy guarantees even when running untrusted application code.</p>
+<hr>
+<h2>Core Idea</h2>
+<p>Hails introduces a web framework that enforces <strong>mandatory information-flow control</strong> throughout the entire application stack.</p>
+<p>Key ideas include:</p>
+<ol>
+<li><strong>MPVC architecture</strong>: Separates Model–Policy (data + security rules) from View–Controller (user interaction logic).</li>
+<li><strong>Data-centric security</strong>: Security policies are attached to data itself using labels that specify who can read or write it.</li>
+<li><strong>Mandatory enforcement</strong>: Policies are enforced by the runtime regardless of application intent or correctness.</li>
+<li><strong>End-to-end confinement</strong>: Restrictions apply across threads, databases, OS processes, and browser interactions.</li>
+</ol>
+<hr>
+<h2>Visual / Diagram Notes</h2>
+<ul>
+<li>The MPVC diagram showing multiple untrusted VCs accessing shared MPs clarified how extensibility and isolation coexist.</li>
+<li>Label flow diagrams helped explain how reading sensitive data restricts future actions like network communication.</li>
+<li>The GitStar architecture demonstrated that this model can work in a real, multi-app platform.</li>
+</ul>
+<hr>
+<h2>Key Results</h2>
+<ul>
+<li>Hails successfully prevents unauthorized data leakage even when third-party apps are buggy or malicious.</li>
+<li>Performance overhead exists but remains competitive with common web frameworks like Sinatra and PHP.</li>
+<li>Developer feedback suggests MPVC reduces security bugs caused by missing or inconsistent access checks.</li>
+<li>Limitations include browser-side enforcement and higher developer learning costs.</li>
+</ul>
+<hr>
+<h2>Personal Analysis</h2>
+<p><strong>What worked</strong>:<br>
+I found the shift from role-based access control to data-flow control especially compelling. From my experience with HIPAA and medical data, authorization is often treated as the end of the security story. Hails shows that preventing unconscious or accidental leakage after access is just as important.</p>
+<p><strong>What puzzled me</strong>:<br>
+The reliance on browser extensions and strong trust assumptions (runtime, OS) raises questions about deployment at scale. I’m also curious how approachable this model would be for teams without strong security or functional programming backgrounds.</p>
+<hr>
+<h2>Connections &amp; Related Work</h2>
+<ul>
+<li>Contrasts sharply with traditional RBAC models used in HIPAA-compliant systems.</li>
+<li>Related to IFC systems like HiStar and Flume, but applied at the web framework level.</li>
+<li>Conceptually relevant to modern LLM agent pipelines, where tools, memory, and external APIs introduce new leakage paths.</li>
+</ul>
+<hr>
+<h2>Implementation Sketch</h2>
+<p>If reproducing or adapting the idea:</p>
+<ul>
+<li>Define data schemas with attached read/write policies</li>
+<li>Enforce policy-aware database access</li>
+<li>Track information flow dynamically during execution</li>
+<li>Restrict network and output channels based on observed data</li>
+<li>Apply similar constraints to LLM tool calls, logging, and memory writes</li>
+</ul>
+<hr>
+<h2>Open Questions / Next Actions</h2>
+<ul>
+<li>Can Hails-style information-flow control realistically complement or replace RBAC in production systems?</li>
+<li>How could this model be adapted to modern LLM agent architectures?</li>
+<li>What tooling or automation would be needed to reduce developer friction?</li>
+<li>Explore whether policy inference could lower the learning curve.</li>
+</ul>
+<hr>
+<h2>Glossary</h2>
+<ul>
+<li><strong>RBAC</strong>: Role-Based Access Control</li>
+<li><strong>IFC</strong>: Information Flow Control</li>
+<li><strong>MAC</strong>: Mandatory Access Control</li>
+<li><strong>MPVC</strong>: Model–Policy–View–Controller</li>
+<li><strong>Label</strong>: Metadata attached to data specifying allowed readers and writers</li>
+</ul>
+</div>
+  <a class="mt-8 inline-flex text-sm font-medium" href="/blog/">Back to blog</a>
+</section>
+      </main>
+      <footer class="mx-auto w-full max-w-7xl px-6 pb-12 pt-16 text-sm text-ink/70">
+  <div class="flex flex-col gap-3 border-t border-ink/10 pt-6 md:flex-row md:items-center md:justify-between">
+    <p>Built with static generation.</p>
+    <p>Last updated 2026.</p>
+  </div>
+</footer>
+    </div>
+  </body>
+</html>
