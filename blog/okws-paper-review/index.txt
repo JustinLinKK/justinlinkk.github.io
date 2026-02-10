@@ -1,7 +1,7 @@
 {
   "title": "Paper Notes: Building Secure High-Performance Web Services with OKWS",
   "date": "2026-02-10T00:00:00.000Z",
-  "summary": " TL;DR",
+  "summary": "Original paper: Building Secure High-Performance Web Services with OKWS(https://www.usenix.org/legacy/event/sec04/tech/fullpapers/krohn/krohn.pdf)",
   "tags": [
     "research-notes",
     "reading-list",

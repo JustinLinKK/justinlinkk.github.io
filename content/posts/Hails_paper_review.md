@@ -15,6 +15,8 @@ paper:
   link: 'https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/giffin'
 ---
 
+Original paper: [Hails: Protecting Data Privacy in Untrusted Web Applications](https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentation/giffin)
+
 ## TL;DR
 - The paper addresses the problem of protecting user data on web platforms that run untrusted third-party applications.
 - Hails enforces mandatory, end-to-end information-flow control by attaching security policies directly to data rather than relying on role-based access checks.

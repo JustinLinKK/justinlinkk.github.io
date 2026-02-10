@@ -1,11 +1,11 @@
 {
-  "generatedAt": "2026-02-10T01:50:26.830Z",
+  "generatedAt": "2026-02-10T01:53:14.056Z",
   "total": 3,
   "posts": [
     {
       "title": "Paper Notes: Hails – Protecting Data Privacy in Untrusted Web Applications",
       "date": "2026-02-10T00:00:00.000Z",
-      "summary": " TL;DR",
+      "summary": "Original paper: Hails: Protecting Data Privacy in Untrusted Web Applications(https://www.usenix.org/conference/usenixsecurity12/technical-sessions/presentati...",
       "slug": "Hails_paper_review",
       "tags": [
         "research-notes",
@@ -19,7 +19,7 @@
     {
       "title": "Paper Notes: Building Secure High-Performance Web Services with OKWS",
       "date": "2026-02-10T00:00:00.000Z",
-      "summary": " TL;DR",
+      "summary": "Original paper: Building Secure High-Performance Web Services with OKWS(https://www.usenix.org/legacy/event/sec04/tech/fullpapers/krohn/krohn.pdf)",
       "slug": "okws-paper-review",
       "tags": [
         "research-notes",

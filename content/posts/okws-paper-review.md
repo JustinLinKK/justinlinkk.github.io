@@ -14,6 +14,8 @@ paper:
   link: 'https://www.usenix.org/legacy/event/sec04/tech/full_papers/krohn/krohn.pdf'
 ---
 
+Original paper: [Building Secure High-Performance Web Services with OKWS](https://www.usenix.org/legacy/event/sec04/tech/full_papers/krohn/krohn.pdf)
+
 ## TL;DR
 - The paper tackles the problem of securing dynamic web services in the presence of inevitable bugs, without sacrificing performance.
 - It proposes OKWS, a web service architecture that enforces compromise containment through strict process isolation and least-privilege design.
