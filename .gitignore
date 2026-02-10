@@ -2,10 +2,20 @@
 /node_modules
 /.pnp
 .pnp.js
+package-lock.json
+pnpm-lock.yaml
+npm-shrinkwrap.json
+
+# build / deploy caches
+/.turbo
+.eslintcache
+.vercel
+coverage/
 
 # Next.js
 /.next
 /out
+.next/cache
 
 # production
 /build
