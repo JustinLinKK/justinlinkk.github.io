@@ -316,12 +316,4 @@ Orthogonal to:
 ---
 
 ### Personal Takeaway
-
-Edna is a strong example of systems research that balances:
-
-- Clean abstraction  
-- Practical deployability  
-- Compositional correctness  
-- Real-world integration  
-
-It demonstrates that privacy control need not sacrifice application integrity or usability.
+In my previous experience of web design, soft deletion is an important constraint for modern web system design.  Traditional soft deletion preserves referential integrity and recoverability, but leaves plaintext data intact and fully exposed under database compromise. Edna allows applications to preserve structural consistency while making disguised data inaccessible. However, while it removes explicit ownership links and encrypts disguised data, it does not eliminate the risk of statistical analysis. Attackers may still use the residual information, and correlate behavioral patterns, activity timestamps, or structural signals with pseudo-principals to derive some sensitive records like account relations. Additionally, the system’s correctness fully depends on developer-defined JSON disguise specifications.  If a developer omits a table or writes an incomplete predicate, sensitive data may remain undisguised without detection. A question I would like to leave is, how should we manage the synchronization between current database and backup database with Edna since backup data may still visible. Rate 5/5

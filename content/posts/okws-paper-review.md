@@ -75,7 +75,10 @@ If reproducing the core ideas today:
 - Would a modern OKWS redesign prefer containers, microVMs, or language-level isolation?
 - Explore comparisons between OKWS, Kubernetes best practices, and Firecracker in high-assurance cloud environments.
 
-## Glossary (optional)
+## Glossary
 - **Least Privilege**: Granting a process only the permissions it strictly needs.
 - **Compromise Containment**: Limiting the impact radius after a security breach.
 - **Process Isolation**: Using OS processes to enforce memory and privilege boundaries.
+
+## Personal Takeaway
+As a could app developer I admire the core idea of this paper : containing compromises through strict privilege isolation and well-defined trust boundaries. In fact it is the same idea on Firecracker design or even modern web server design. Current engineers use technologies like Docker to design similar web service system on cloud. The main difference is its engineering effort required is less than OKWS. During my experience I also noticed that in realistic scenario not much key services require privilege access and most static data request could be pre-buffered by pooling process and load balancer, so key security protection does not impact performance significantly. My question is, since current complex web services are deployed based on containers or VMs, and they may run on different machines with inter-communication channels, would it be much safer compared with single machine OKWS or there are more security concerns?
