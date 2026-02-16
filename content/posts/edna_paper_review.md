@@ -20,7 +20,7 @@ paper:
 
 ---
 
-## TL;DR (3 sentences max)
+## TL;DR
 
 - Edna enables web applications to support **reversible, composable user data removal and anonymization** without breaking referential integrity.
 - It introduces three primitives—**remove, modify, decorrelate**—implemented using encrypted diff records and pseudoprincipals.
