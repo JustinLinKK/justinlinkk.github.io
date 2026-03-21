@@ -215,3 +215,6 @@ If reproducing a research prototype inspired by this:
 **ASID** – Address Space Identifier  
 **Controlled-channel attack** – Attack exploiting OS-controlled resources (e.g., page faults, interrupts)  
 **SRE** – Secure Remote Execution  
+
+## Personal Takeaway
+This paper is important since it reshaped how I think about confidential computing from a cloud infrastructure perspective. In server environments, the hypervisor and host OS are trusted to manage CPU scheduling, memory, and I/O, but this paper shows how TEEs treats them as adversaries. The TRAF framework helped me understand that many TEE vulnerabilities are results of how runtime resource management is divided across trust boundaries. I'm interested in how different TEEs perform tradeoffs between performance and security, especially when deciding whether to leave components in unprotected mode. Two questions I would like to leave are: How should TEEs adapt to modern cloud environments that integrated heavily on GPUs for confidential workloads? Are some security risks unavoidable in TEEs because cloud systems must share and manage resources efficiently?

@@ -227,3 +227,8 @@ Training method that provides formal privacy guarantees via noise injection.
 Privacy framework stating data misuse occurs when information appears outside intended context.
 
 ---
+
+## Personal Takeaway
+This paper is important because it exposes a structural privacy weakness in LLMs. From my own experience using GPT-3.5 in 2022, I was able to get sensitive outputs such as Windows activation codes and callable phone numbers, that reflected with the authors’ core claim: memorization is not accidental but a byproduct of the next-token prediction objective. Rare or uniquely structured training examples like addresses or contacts can receive disproportionately low training loss, making them statistically attractive continuations under specific prompt engineering. This vulnerability is extremely dangerous, since attackers actually have no technical barriers on extracting data from LLMs as paper shown. I would rate this paper 5/5. And here are my 2 questions:
+1. For legacy open source LLMs such as GPT-2, they were trained without privacy filtering. What practical mitigation strategies can reduce ongoing privacy risks, given that retraining from scratch and delete all vulnerable copies may not be feasible?
+2. Do modern LLM-based agent systems introduce new privacy vulnerabilities beyond model memorization, such as tool misuse or retrieval-layer leakage?
