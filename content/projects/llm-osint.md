@@ -1,6 +1,6 @@
 ---
 title: "Consent-Based LLM-OSINT Pipeline"
-date: 2026-02-15
+date: 2026-03-05
 excerpt: "An end-to-end agentic pipeline that compiles structured, citation-grounded person profiles from public data using LLMs, MCP tooling, and graph-based normalization<br/><img src='/images/projects/llm-osint/cover.jpg'>"
 collection: projects
 ---
@@ -11,6 +11,7 @@ collection: projects
 This project presents an **end-to-end agentic LLM system** for open-source intelligence (OSINT) that automatically compiles structured, citation-grounded person profiles from **public data using only a name as input**.  
 
 - **Detailed Wiki:** [DeepWiki Overview](https://deepwiki.com/JustinLinKK/llm-osint/1-overview)
+- **Paper Draft:** [Download PDF](/files/llm-osint-paper.pdf)
 
 Unlike traditional OSINT tools that stop at data collection, this pipeline integrates **retrieval, reasoning, normalization, and synthesis** into a unified workflow. It introduces a **dual-retrieval architecture (vector + knowledge graph)** and a **graph-cleanup stage** to resolve identity ambiguity, deduplicate entities, and reduce contradictions.
 
