@@ -1,7 +1,7 @@
 ---
 title: "Consent-Based LLM-OSINT Pipeline"
 date: 2026-03-05
-excerpt: "An end-to-end agentic pipeline that compiles structured, citation-grounded person profiles from public data using LLMs, MCP tooling, and graph-based normalization<br/><img src='/images/projects/llm-osint/cover.jpg'>"
+excerpt: "An end-to-end agentic pipeline that compiles structured, citation-grounded person profiles from public data using LLMs, MCP tooling, and graph-based normalization<br/><img src='/images/projects/llm-osint/cover.png'>"
 collection: projects
 ---
 
