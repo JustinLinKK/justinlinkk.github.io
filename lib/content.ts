@@ -1,5 +1,6 @@
 import fs from "fs";
 import path from "path";
+import { load } from "cheerio";
 import matter from "gray-matter";
 
 export type ContentItem = {
@@ -26,16 +27,72 @@ function isSupported(filename: string) {
   return supportedExtensions.includes(path.extname(filename));
 }
 
+const allowedExcerptTags = new Set(["a", "b", "br", "code", "em", "i", "p", "span", "strong"]);
+
+function isSafeHref(value?: string) {
+  if (!value) {
+    return false;
+  }
+
+  return /^(https?:|mailto:|\/|#)/i.test(value);
+}
+
+function isSafeImageSrc(value?: string) {
+  if (!value) {
+    return false;
+  }
+
+  return /^(https?:|\/)/i.test(value);
+}
+
 function normalizeExcerpt(excerpt?: string) {
   if (!excerpt) {
     return { excerptHtml: undefined, thumbnailSrc: undefined };
   }
 
-  const thumbnailMatch = excerpt.match(/<img[^>]*src=['"]([^'"]+)['"][^>]*>/i);
-  const thumbnailSrc = thumbnailMatch?.[1];
-  const excerptHtml = thumbnailMatch
-    ? excerpt.replace(thumbnailMatch[0], "").replace(/<br\s*\/?>\s*$/i, "").trim()
-    : excerpt;
+  const $ = load(`<div data-excerpt-root>${excerpt}</div>`, null, false);
+  const root = $("[data-excerpt-root]").first();
+
+  const thumbnailSrcCandidate = root.find("img").first().attr("src");
+  const thumbnailSrc = isSafeImageSrc(thumbnailSrcCandidate)
+    ? thumbnailSrcCandidate
+    : undefined;
+
+  root.find("img,script,style,iframe,object,embed,link,meta").remove();
+
+  root.find("*").each((_, element) => {
+    const tagName = element.tagName?.toLowerCase();
+
+    if (!tagName) {
+      return;
+    }
+
+    const node = $(element);
+
+    if (!allowedExcerptTags.has(tagName)) {
+      node.replaceWith(node.contents());
+      return;
+    }
+
+    const href = tagName === "a" ? element.attribs?.href : undefined;
+    const attributes = Object.keys(element.attribs ?? {});
+    for (const attribute of attributes) {
+      node.removeAttr(attribute);
+    }
+
+    if (tagName === "a") {
+      if (!isSafeHref(href)) {
+        node.replaceWith(node.contents());
+        return;
+      }
+
+      node.attr("href", href);
+      node.attr("rel", "noreferrer");
+      node.attr("target", "_blank");
+    }
+  });
+
+  const excerptHtml = root.html()?.replace(/(<br\s*\/?>\s*)+$/i, "").trim() || undefined;
 
   return { excerptHtml, thumbnailSrc };
 }

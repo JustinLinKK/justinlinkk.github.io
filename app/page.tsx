@@ -44,7 +44,7 @@ export default async function HomePage() {
         <Section title="Gallery" subtitle="Photos and quick notes.">
           <ContentGrid items={techGallery} hrefBase="/tech-gallery" />
         </Section>
-        <Section title="Latest Writing" subtitle="Reflections, logs and writing.">
+        <Section title="Latest Writings" subtitle="Reflections, logs and writing.">
           <ContentGrid items={posts} hrefBase="/blog" showExcerpt={false} />
         </Section>
       </div>

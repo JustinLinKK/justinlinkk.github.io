@@ -39,7 +39,7 @@ export default function SiteHeader() {
         <button
           type="button"
           className="inline-flex items-center rounded-full border border-ink/15 bg-white/80 px-4 py-2 text-sm font-semibold text-ink shadow-sm transition hover:border-accent/40 hover:text-accent md:hidden"
-          aria-expanded={isMenuOpen}
+          aria-expanded={isMenuOpen ? "true" : "false"}
           aria-controls="mobile-site-menu"
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           onClick={() => setIsMenuOpen((open) => !open)}
