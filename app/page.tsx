@@ -1,10 +1,9 @@
 import Link from "next/link";
-import Section from "../components/Section";
-import ContentCard from "../components/ContentCard";
-import ClusterStatus from "../components/ClusterStatus";
-import { getPageContent, getProjects, getTechGallery, getPosts } from "../lib/content";
-import { renderMarkdown } from "../lib/markdown";
-import { formatDate } from "../lib/format";
+import ClusterStatus from "@/components/ClusterStatus";
+import ContentGrid from "@/components/ContentGrid";
+import Section from "@/components/Section";
+import { getPageContent, getPosts, getProjects, getTechGallery } from "@/lib/content";
+import { renderMarkdown } from "@/lib/markdown";
 
 export default async function HomePage() {
   const about = getPageContent("about");
@@ -13,9 +12,6 @@ export default async function HomePage() {
   const projects = getProjects().slice(0, 2);
   const techGallery = getTechGallery().slice(0, 1);
   const posts = getPosts().slice(0, 3);
-  type Project = typeof projects[number];
-  type TechItem = typeof techGallery[number];
-  type Post = typeof posts[number];
 
   return (
     <div className="space-y-12">
@@ -34,51 +30,22 @@ export default async function HomePage() {
       </section>
 
       <Section
-        title="Latest projects"
+        title="Latest Projects"
         subtitle="Build, integration and research"
       >
-        <div className="grid gap-4 md:grid-cols-2">
-          {projects.map((item: Project) => (
-            <ContentCard
-              key={item.slug}
-              href={`/projects/${item.slug}`}
-              title={item.title}
-              meta={formatDate(item.date)}
-              excerptHtml={item.excerpt}
-            />
-          ))}
-        </div>
+        <ContentGrid items={projects} hrefBase="/projects" columnsClassName="md:grid-cols-2" />
       </Section>
 
-      <Section title="Cluster status" subtitle="Snapshot of pi-slurm health.">
+      <Section title="Cluster Status" subtitle="Snapshot of pi-cluster health.">
         <ClusterStatus />
       </Section>
 
       <div className="grid gap-6 md:grid-cols-2">
         <Section title="Gallery" subtitle="Photos and quick notes.">
-          <div className="grid gap-4">
-            {techGallery.map((item: TechItem) => (
-              <ContentCard
-                key={item.slug}
-                href={`/tech-gallery/${item.slug}`}
-                title={item.title}
-                meta={formatDate(item.date)}
-                excerptHtml={item.excerpt}
-              />
-            ))}
-          </div>
+          <ContentGrid items={techGallery} hrefBase="/tech-gallery" />
         </Section>
-        <Section title="Latest writing" subtitle="Reflections, logs and writing.">
-          <div className="grid gap-4">
-            {posts.map((item: Post) => (
-              <ContentCard
-                key={item.slug}
-                href={`/blog/${item.slug}`}
-                title={item.title}
-                meta={formatDate(item.date)}
-              />
-            ))}
-          </div>
+        <Section title="Latest Writing" subtitle="Reflections, logs and writing.">
+          <ContentGrid items={posts} hrefBase="/blog" showExcerpt={false} />
         </Section>
       </div>
     </div>
