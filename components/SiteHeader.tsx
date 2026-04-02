@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const navItems = [
   { label: "Projects", href: "/projects" },
@@ -16,10 +16,6 @@ const navItems = [
 export default function SiteHeader() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  useEffect(() => {
-    setIsMenuOpen(false);
-  }, [pathname]);
 
   return (
     <header className="mx-auto w-full max-w-6xl px-6 py-6">
@@ -60,6 +56,7 @@ export default function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
+                onClick={() => setIsMenuOpen(false)}
                 className={`rounded-xl px-4 py-3 text-sm font-semibold transition ${
                   isActive
                     ? "bg-accent/10 text-accent"
