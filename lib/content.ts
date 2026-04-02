@@ -7,6 +7,8 @@ export type ContentItem = {
   title: string;
   date?: string;
   excerpt?: string;
+  excerptHtml?: string;
+  thumbnailSrc?: string;
   tags?: string[];
   collection?: string;
   draft?: boolean;
@@ -24,16 +26,34 @@ function isSupported(filename: string) {
   return supportedExtensions.includes(path.extname(filename));
 }
 
+function normalizeExcerpt(excerpt?: string) {
+  if (!excerpt) {
+    return { excerptHtml: undefined, thumbnailSrc: undefined };
+  }
+
+  const thumbnailMatch = excerpt.match(/<img[^>]*src=['"]([^'"]+)['"][^>]*>/i);
+  const thumbnailSrc = thumbnailMatch?.[1];
+  const excerptHtml = thumbnailMatch
+    ? excerpt.replace(thumbnailMatch[0], "").replace(/<br\s*\/?>\s*$/i, "").trim()
+    : excerpt;
+
+  return { excerptHtml, thumbnailSrc };
+}
+
 function readContentFile(filePath: string): ContentItem {
   const file = fs.readFileSync(filePath, "utf-8");
   const { data, content } = matter(file);
   const slug = path.basename(filePath, path.extname(filePath));
+  const excerpt = data.excerpt ? String(data.excerpt) : undefined;
+  const { excerptHtml, thumbnailSrc } = normalizeExcerpt(excerpt);
 
   return {
     slug,
     title: String(data.title || slug),
     date: data.date ? String(data.date) : undefined,
-    excerpt: data.excerpt ? String(data.excerpt) : undefined,
+    excerpt,
+    excerptHtml,
+    thumbnailSrc,
     tags: Array.isArray(data.tags) ? data.tags.map(String) : undefined,
     collection: data.collection ? String(data.collection) : undefined,
     draft: data.draft === true,

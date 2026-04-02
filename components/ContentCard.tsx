@@ -6,6 +6,7 @@ export default function ContentCard({
   title,
   meta,
   excerptHtml,
+  thumbnailSrc,
   className,
   titleClassName,
   showReadMore = true
@@ -14,21 +15,11 @@ export default function ContentCard({
   title: string;
   meta?: string;
   excerptHtml?: string;
+  thumbnailSrc?: string;
   className?: string;
   titleClassName?: string;
   showReadMore?: boolean;
 }) {
-  const thumbnailMatch = excerptHtml?.match(
-    /<img[^>]*src=['"]([^'"]+)['"][^>]*>/i
-  );
-  const thumbnailSrc = thumbnailMatch?.[1];
-  const cleanedExcerpt = thumbnailMatch
-    ? excerptHtml
-        ?.replace(thumbnailMatch[0], "")
-        .replace(/<br\s*\/?>\s*$/i, "")
-        .trim()
-    : excerptHtml;
-
   return (
     <article
       className={`content-card group flex h-full flex-col justify-between rounded-2xl border border-ink/10 bg-white/80 p-5 transition hover:-translate-y-1 hover:border-accent/50 hover:shadow-lg ${className ?? ""}`}
@@ -53,10 +44,10 @@ export default function ContentCard({
           </Link>
         </h3>
         {meta ? <p className="text-xs uppercase tracking-wide text-ink/50">{meta}</p> : null}
-        {cleanedExcerpt ? (
+        {excerptHtml ? (
           <div
             className="excerpt-content text-sm text-ink/70"
-            dangerouslySetInnerHTML={{ __html: cleanedExcerpt }}
+            dangerouslySetInnerHTML={{ __html: excerptHtml }}
           />
         ) : null}
       </div>
