@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const navItems = [
   { label: "Projects", href: "/projects" },
@@ -16,6 +16,10 @@ const navItems = [
 export default function SiteHeader() {
   const pathname = usePathname();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
 
   return (
     <header className="mx-auto w-full max-w-6xl px-6 py-6">
@@ -35,7 +39,7 @@ export default function SiteHeader() {
         <button
           type="button"
           className="inline-flex items-center rounded-full border border-ink/15 bg-white/80 px-4 py-2 text-sm font-semibold text-ink shadow-sm transition hover:border-accent/40 hover:text-accent md:hidden"
-          aria-expanded={isMenuOpen}
+          aria-expanded={isMenuOpen ? "true" : "false"}
           aria-controls="mobile-site-menu"
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
           onClick={() => setIsMenuOpen((open) => !open)}
@@ -56,7 +60,6 @@ export default function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                onClick={() => setIsMenuOpen(false)}
                 className={`rounded-xl px-4 py-3 text-sm font-semibold transition ${
                   isActive
                     ? "bg-accent/10 text-accent"
