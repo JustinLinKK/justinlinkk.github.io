@@ -20,7 +20,6 @@ jobs:
     if: github.ref == 'refs/heads/production-pages'
     runs-on: [self-hosted]
     steps:
-      - run: echo "build"
       - name: Checkout
         uses: actions/checkout@v4
 
@@ -49,7 +48,6 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - run: echo "deploy"
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4

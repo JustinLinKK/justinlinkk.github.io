@@ -5,13 +5,13 @@ node_modules/
 package-lock.json
 pnpm-lock.yaml
 npm-shrinkwrap.json
-yarn.lock
 old_build/
 
 # build output
 .next/
 out/
 build/
+blog/
 
 # caches
 .turbo/

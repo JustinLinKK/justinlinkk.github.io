@@ -42,6 +42,13 @@ a:hover {
   @apply mt-3 h-36 w-full rounded-xl object-cover;
 }
 
+.home-gallery-excerpt {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+  overflow: hidden;
+}
+
 .content-collection {
   --ink: #0d0f16;
   --paper: #f6f2ea;
