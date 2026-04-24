@@ -1,7 +1,7 @@
 ---
 title: "Raspberry Pi Cluster v2"
 date: 2025-08-01
-excerpt: "A smaller, portable Raspberry Pi cluster with a similar v1 software stack<br/><img src='/images/projects/piclusterv2/1.jpg'>"
+excerpt: "Portable Raspberry Pi cluster using Cluster HAT, SLURM, and OpenMPI for compact parallel workloads including FEM brake heat-transfer analysis and ParaView visualization.<br/><img src='/images/projects/piclusterv2/1.jpg'>"
 collection: projects
 ---
 
@@ -29,12 +29,23 @@ Raspberry Pi Cluster v2 is a compact, portable rebuild of v1 with a similar soft
 - **SLURM:** Scheduling and job control across compute nodes
 - **OpenMPI:** Parallel execution for MPI jobs
 - **Monitoring:** A minimal web dashboard for node status and quick health checks
+- **Visualization:** ParaView for reviewing and presenting simulation output
 
 ## Implementation Details
 1. **Compact Assembly:** Designed a smaller enclosure for easy transport and quick setup.
 2. **Environment Replication:** Matched the v1 software stack for compatibility with existing scripts and workflows.
 3. **Cluster HAT Integration:** Leveraged Cluster HAT to simplify wiring and reduce setup time.
 4. **Status Monitoring:** Built and hosted a lightweight cluster status page for node health tracking.
+
+## Demonstration Workload: FEM Brake Heat Transfer Analysis
+To validate the cluster on a realistic engineering task, I used Pi Cluster v2 to run a finite element heat-transfer analysis of a brake component as a parallel computing workload. The cluster handled the distributed job execution, and the resulting temperature field was visualized in ParaView to review how heat propagates through the brake geometry over time.
+
+<video controls preload="metadata" width="100%" style="border-radius: 18px; margin: 1rem 0;">
+  <source src="/files/resultVideo.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
+This workflow demonstrates that the cluster is not just a portable systems build, but also a practical platform for engineering computation, batch execution, and scientific-result visualization.
 
 ## Challenges and Resolutions
 - **Tighter Resource Constraints:** Raspberry Pi Zero 2 nodes required careful tuning of MPI job sizes and concurrency.
@@ -45,6 +56,7 @@ Raspberry Pi Cluster v2 is a compact, portable rebuild of v1 with a similar soft
 - **Portable Cluster:** A compact, carry-ready cluster with a familiar v1 workflow.
 - **Improved Mobility:** Faster setup and teardown without losing core capabilities.
 - **Operational Visibility:** Live monitoring for quick validation and troubleshooting.
+- **Parallel Simulation Demo:** Successfully used the cluster for a brake FEM heat-transfer job and visualized the results in ParaView.
 - **Portfolio Deployment:** Currently responsible for building and deploying my personal portfolio website every time I update it.
 
 ## Future Plans

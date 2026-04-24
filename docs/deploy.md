@@ -1,71 +1,54 @@
 # Development, Testing, and Production Deploy
 
-## Blog Generation Workflow
+## Development
 
-The blog is sourced from markdown files in `content/posts`. Each time you add or edit a post:
-
-1. Ensure the front matter includes `title` and `date`. Add `draft: true` to keep a note private.
-2. Install dependencies once per environment:
+1. Install dependencies:
    ```bash
    yarn install
    ```
-3. Convert markdown into the static HTML under `blog/`:
+2. Start the local dev server:
    ```bash
-   yarn generate:blog
+   yarn dev
    ```
-4. Commit both the markdown and the generated HTML so GitHub Pages stays in sync.
-  5. Future-dated posts are hidden automatically; export `INCLUDE_FUTURE=true` if you need to preview them locally.
+3. Open http://localhost:3000 and verify the relevant pages.
 
-## Development (Local)
+## Content Workflow
 
-- Generate the blog (steps above) whenever markdown changes.
-- Serve the static site from the repo root:
-  ```bash
-  npx serve . -l 3000
-  ```
-- Navigate to http://localhost:3000 and click through `/blog` + the individual posts.
+- Blog posts live in `content/posts`.
+- Projects live in `content/projects`.
+- Tech gallery entries live in `content/tech-gallery`.
+- Shared pages live in `content/pages`.
 
-## Testing / Validation
+Each entry is sourced directly by the Next app during build. There is no separate generated `blog/` publishing step anymore.
 
-- Regenerate after every edit (use `INCLUDE_FUTURE=true yarn generate:blog` if you need to surface scheduled posts temporarily):
-  ```bash
-  yarn generate:blog
-  ```
-- Smoke-test the exact files that GitHub Pages will host:
-  ```bash
-  npx serve . -l 4000
-  ```
+## Production Build Validation
 
-## Production Deploy (GitHub Pages)
+To validate the same static export that GitHub Pages will deploy:
+
+1. Build the site:
+   ```bash
+   yarn build
+   ```
+2. Preview the generated output:
+   ```bash
+   npx serve out -l 4000
+   ```
+
+## GitHub Pages Deployment
+
+The repository deploys via `.github/workflows/deploy-gh-pages.yml`.
 
 ### One-time setup
 
-- Ensure GitHub Pages is configured:
-  - Repo Settings -> Pages
-  - Source: Deploy from a branch
-  - Branch: gh-pages / (root)
+- In GitHub repo settings, configure Pages to use **GitHub Actions** as the source.
 
-### Manual deploy steps
+### Publish flow
 
-1. Update markdown and run `yarn generate:blog`.
-2. Commit the updated `content/` + `blog/` directories on `production-pages` (or your working branch) and push. If GitHub Pages already reads from that branch, you are finished.
-3. To continue using a separate `gh-pages` branch, mirror the working tree into a temporary directory and force-push:
-  ```bash
-  tmp_dir=$(mktemp -d)
-  rsync -av --delete --exclude '.git' ./ "$tmp_dir/"
-  git checkout --orphan gh-pages
-  git rm -rf .
-  rsync -av "$tmp_dir/" ./
-  touch .nojekyll
-  git add .
-  git commit -m "Deploy to GitHub Pages"
-  git push -u origin gh-pages --force
-  git checkout production-pages
-  rm -rf "$tmp_dir"
-  ```
+1. Commit your source changes to the `production-pages` branch.
+2. Push that branch to GitHub.
+3. The workflow will install dependencies, run `yarn build`, upload `out/`, and deploy it to GitHub Pages.
 
-### Notes
+## Notes
 
-- The deployed site URL:
-  - https://justinlinkk.github.io/
-- Always run `yarn generate:blog` before publishing so the static HTML matches the markdown.
+- Deployed site URL: https://justinlinkk.github.io/
+- Do not commit `.next/`, `out/`, or legacy generated site folders.

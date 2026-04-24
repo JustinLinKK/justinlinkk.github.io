@@ -9,6 +9,8 @@ export default function ContentCard({
   thumbnailSrc,
   className,
   titleClassName,
+  excerptClassName,
+  mediaClassName,
   showReadMore = true
 }: {
   href: string;
@@ -18,6 +20,8 @@ export default function ContentCard({
   thumbnailSrc?: string;
   className?: string;
   titleClassName?: string;
+  excerptClassName?: string;
+  mediaClassName?: string;
   showReadMore?: boolean;
 }) {
   return (
@@ -25,7 +29,9 @@ export default function ContentCard({
       className={`content-card group flex h-full flex-col justify-between rounded-2xl border border-ink/10 bg-white/80 p-5 transition hover:-translate-y-1 hover:border-accent/50 hover:shadow-lg ${className ?? ""}`}
     >
       {thumbnailSrc ? (
-        <div className="content-card__media relative w-full h-48 overflow-hidden rounded-md">
+        <div
+          className={`content-card__media relative w-full overflow-hidden rounded-md ${mediaClassName ?? "h-48"}`}
+        >
           <Image
             src={thumbnailSrc}
             alt={title}
@@ -46,7 +52,7 @@ export default function ContentCard({
         {meta ? <p className="text-xs uppercase tracking-wide text-ink/50">{meta}</p> : null}
         {excerptHtml ? (
           <div
-            className="excerpt-content text-sm text-ink/70"
+            className={`excerpt-content text-sm text-ink/70 ${excerptClassName ?? ""}`}
             dangerouslySetInnerHTML={{ __html: excerptHtml }}
           />
         ) : null}

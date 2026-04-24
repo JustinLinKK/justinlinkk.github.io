@@ -10,8 +10,8 @@ export default async function HomePage() {
   const aboutHtml = about ? await renderMarkdown(about.content) : "";
 
   const projects = getProjects().slice(0, 2);
-  const techGallery = getTechGallery().slice(0, 1);
-  const posts = getPosts().slice(0, 3);
+  const techGallery = getTechGallery().slice(0, 4);
+  const posts = getPosts().slice(0, 5);
 
   return (
     <div className="space-y-12">
@@ -40,9 +40,16 @@ export default async function HomePage() {
         <ClusterStatus />
       </Section>
 
-      <div className="grid gap-6 md:grid-cols-2">
+      <div className="grid items-start gap-6 xl:grid-cols-[1.15fr_0.85fr]">
         <Section title="Gallery" subtitle="Photos and quick notes.">
-          <ContentGrid items={techGallery} hrefBase="/tech-gallery" />
+          <ContentGrid
+            items={techGallery}
+            hrefBase="/tech-gallery"
+            columnsClassName="sm:grid-cols-2"
+            titleClassName="line-clamp-2"
+            excerptClassName="home-gallery-excerpt"
+            mediaClassName="h-40"
+          />
         </Section>
         <Section title="Latest Writings" subtitle="Reflections, logs and writing.">
           <ContentGrid items={posts} hrefBase="/blog" showExcerpt={false} />

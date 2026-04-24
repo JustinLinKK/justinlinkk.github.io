@@ -8,6 +8,8 @@ type ContentGridProps = {
   columnsClassName?: string;
   cardClassName?: string;
   titleClassName?: string;
+  excerptClassName?: string;
+  mediaClassName?: string;
   showExcerpt?: boolean;
   showReadMore?: boolean;
 };
@@ -18,6 +20,8 @@ export default function ContentGrid({
   columnsClassName,
   cardClassName,
   titleClassName,
+  excerptClassName,
+  mediaClassName,
   showExcerpt = true,
   showReadMore = true
 }: ContentGridProps) {
@@ -33,6 +37,8 @@ export default function ContentGrid({
           thumbnailSrc={item.thumbnailSrc}
           className={cardClassName}
           titleClassName={titleClassName}
+          excerptClassName={excerptClassName}
+          mediaClassName={mediaClassName}
           showReadMore={showReadMore}
         />
       ))}

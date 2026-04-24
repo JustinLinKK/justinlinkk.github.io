@@ -1,8 +1,11 @@
-import { remark } from "remark";
-import remarkGfm from "remark-gfm";
-import remarkHtml from "remark-html";
+import MarkdownIt from "markdown-it";
+
+const md = new MarkdownIt({
+  html: true,
+  linkify: true,
+  breaks: false
+});
 
 export async function renderMarkdown(markdown: string) {
-  const result = await remark().use(remarkGfm).use(remarkHtml).process(markdown);
-  return result.toString();
+  return md.render(markdown);
 }
