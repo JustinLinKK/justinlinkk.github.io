@@ -27,6 +27,18 @@ The system is designed under a **consent-based framework**, positioning it as bo
 - **Structured Normalization:** Resolve identity ambiguity and conflicting data via graph reasoning
 - **Scalable Agent System:** Use planner–worker architecture for iterative retrieval and refinement
 - **Privacy-Aware Design:** Evaluate aggregation risk under a consent-based OSINT setting
+- **Misuse-Aware Reporting:** Study how automated profiles could expose social-engineering risk without turning the system into an exploitation tool
+
+---
+
+## Risk Model and Motivation
+The central privacy question behind this project is: **how dangerous would a fully automated OSINT engine become if it could turn scattered public traces into a coherent person-level report?** The risk is not only that the system finds information. The larger risk is that it compresses search, correlation, and synthesis into a cheap, repeatable workflow.
+
+A particularly sensitive failure mode is personality and social-network inference. If an automated system can infer a person's affiliations, communication patterns, public interests, professional dependencies, or identity overlaps, then a malicious operator could use that report to identify weak points for impersonation, pretexting, trust abuse, or other social-engineering attacks. In security terms, the vulnerability is created by aggregation: facts that are harmless alone can become high-risk when connected into a single profile.
+
+For that reason, I frame the project as a **consent-based privacy-risk measurement tool**, not as an offensive OSINT product. The technical question is how well LLM agents can retrieve, normalize, and cite public information. The ethical question is how to design such systems so they help users audit their own public exposure without producing targeting instructions against other people.
+
+This changes the desired report behavior. A responsible system should highlight categories of exposure, unsupported claims, identity ambiguity, and source provenance, while avoiding speculative psychological labeling or tactical recommendations for manipulating the subject. The goal is to help a consenting person understand and reduce their attack surface.
 
 ---
 
@@ -153,7 +165,11 @@ Automation shifts effort from **collection → verification**
 
 ### Privacy Constraints
 - Problem: OSINT aggregation risk  
-- Solution: consent-based design + public-data-only restriction  
+- Solution: consent-based design + public-data-only restriction + report guardrails that avoid social-engineering instructions  
+
+### Misuse Potential
+- Problem: automated profiles could reveal identity overlaps, trust relationships, or behavioral signals that make a person easier to target  
+- Solution: treat sensitive inferences as exposure warnings for the consenting subject, require citation/provenance, avoid speculative personality judgments, and design reports around risk reduction rather than exploitation  
 
 ---
 
@@ -164,6 +180,7 @@ Automation shifts effort from **collection → verification**
 - **Demonstrated Privacy Insight:**  
   - Risk is not hidden data  
   - Risk is **low-cost aggregation of public data** :contentReference[oaicite:3]{index=3}  
+  - Automated synthesis can turn public identity fragments into social-engineering exposure if consent and reporting boundaries are weak
 
 ---
 
@@ -173,6 +190,7 @@ Automation shifts effort from **collection → verification**
 - **Scalability:** optimize planner scheduling and parallel tool execution  
 - **Graph Learning:** explore LLM-assisted entity resolution and graph embeddings  
 - **Privacy Controls:** encryption, selective retention, and user audit interfaces  
+- **Safety Controls:** consent verification, access logging, report redaction, sensitive-inference filters, and output policies that focus on self-auditing instead of social-engineering enablement
 
 ---
 

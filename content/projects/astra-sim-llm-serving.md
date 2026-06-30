@@ -25,6 +25,15 @@ The key idea is not to claim that one layout always wins. Instead, the project b
 - **Explore Design Space:** Use calibrated constants to sweep token shapes, worker counts, and GPU role assignments.
 - **Separate Evidence Levels:** Clearly distinguish calibrated two-GPU results from larger four-GPU simulator extrapolations.
 
+## Thesis and Motivation
+My thesis is that the ultimate target of LLM serving research should be lowering **cost per generated token** while still achieving the best practical **cost per request** for a given service-level objective. A serving system is not just trying to be fast in isolation; it is trying to place every dollar of GPU time where it creates the most useful latency and throughput improvement.
+
+This matters because it is impossible to test every scenario and deployment configuration directly on real LLM serving hardware. Request rates, prompt lengths, output lengths, chunk sizes, GPU counts, prefill/decode splits, and scheduling policies create a very large design space. A calibrated simulator gives me a way to explore that space first, identify promising regions, and reserve expensive hardware experiments for the configurations most likely to change a deployment decision.
+
+The current study uses static role assignment for prefill-decode disaggregated serving. That is a useful baseline, but it is not the end goal. A future serving scheduler could measure GPU idleness online and reassign idle GPUs from one role to another, or use an ML model to predict near-future demand and remap the cluster toward the lowest-cost role combination before queues build up. In that version, the simulator becomes a training and evaluation environment for adaptive scheduling policies, not only a tool for fixed-layout comparison.
+
+Another direction is heterogeneous hardware placement. Real clusters often contain different GPU generations or memory capacities. If GPU A has more HBM and performs better during decode, while older GPU B is still effective for prefill, then the scheduler should prefer GPU A for decode-heavy work and GPU B for prefill-heavy work. The larger idea is to treat hardware differences as scheduling signals so the serving system can reduce wasted capability and push down request cost.
+
 ## System Architecture
 The implementation adds a unified analytical layer on top of ASTRA-sim with three major study modes:
 
@@ -130,6 +139,7 @@ The repository also includes commands for restoring compact calibration archives
 - Only the two-GPU colocated point, the two-GPU `P1/D1` disaggregated point, and fixed-size two-GPU chunked replay rows are calibrated against hardware.
 - Four-GPU layouts, larger worker-count sweeps, and chunked four-GPU figures are extrapolated simulator results.
 - GPU roles are static during a run; the scheduler does not yet support adaptive role switching.
+- The serving study assumes homogeneous GPU workers; heterogeneous GPU-aware role placement is a future extension.
 - Chunked prefill is modeled at the queue level and does not yet capture vLLM block management, prefix-cache hits, preemption, or per-layer asynchronous KV transfer.
 
 ## Why It Matters

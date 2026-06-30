@@ -3,13 +3,28 @@ import ClusterStatus from "@/components/ClusterStatus";
 import ContentGrid from "@/components/ContentGrid";
 import Section from "@/components/Section";
 import { getPageContent, getPosts, getProjects, getTechGallery } from "@/lib/content";
+import {
+  featuredHardwareProjectSlugs,
+  featuredSoftwareProjectSlugs,
+  resolveFeaturedProjects
+} from "@/lib/homepage-projects";
 import { renderMarkdown } from "@/lib/markdown";
 
 export default async function HomePage() {
   const about = getPageContent("about");
   const aboutHtml = about ? await renderMarkdown(about.content) : "";
 
-  const projects = getProjects().slice(0, 2);
+  const projects = getProjects();
+  const hardwareProjects = resolveFeaturedProjects(
+    projects,
+    featuredHardwareProjectSlugs,
+    "hardware"
+  );
+  const softwareProjects = resolveFeaturedProjects(
+    projects,
+    featuredSoftwareProjectSlugs,
+    "software"
+  );
   const techGallery = getTechGallery().slice(0, 4);
   const posts = getPosts().slice(0, 5);
 
@@ -30,10 +45,37 @@ export default async function HomePage() {
       </section>
 
       <Section
-        title="Latest Projects"
-        subtitle="Build, integration and research"
+        title="Featured Hardware Projects"
+        subtitle="Hardware acceleration, embedded systems and physical integration."
       >
-        <ContentGrid items={projects} hrefBase="/projects" columnsClassName="md:grid-cols-2" />
+        <ContentGrid
+          items={hardwareProjects}
+          hrefBase="/projects"
+          columnsClassName="md:grid-cols-2"
+        />
+        <Link
+          href="/projects"
+          className="mt-6 inline-flex rounded-full border border-ink/15 bg-white/80 px-4 py-2 text-sm font-semibold text-ink shadow-sm hover:border-accent/40 hover:text-accent"
+        >
+          Show more
+        </Link>
+      </Section>
+
+      <Section
+        title="Featured Software Projects"
+        subtitle="AI systems, simulations, robotics software and infrastructure."
+      >
+        <ContentGrid
+          items={softwareProjects}
+          hrefBase="/projects"
+          columnsClassName="md:grid-cols-2"
+        />
+        <Link
+          href="/projects"
+          className="mt-6 inline-flex rounded-full border border-ink/15 bg-white/80 px-4 py-2 text-sm font-semibold text-ink shadow-sm hover:border-accent/40 hover:text-accent"
+        >
+          Show more
+        </Link>
       </Section>
 
       <Section title="Cluster Status" subtitle="Snapshot of pi-cluster health.">
