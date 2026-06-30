@@ -5,6 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
 const navItems = [
+  { label: "About", href: "/about" },
   { label: "Projects", href: "/projects" },
   { label: "Experience", href: "/experience" },
   { label: "Gallery", href: "/tech-gallery" },
@@ -28,7 +29,7 @@ export default function SiteHeader() {
           Justin Lin
         </Link>
 
-        <nav className="hidden gap-6 text-base font-semibold md:flex">
+        <nav className="hidden gap-4 text-sm font-semibold lg:flex xl:gap-6 xl:text-base">
           {navItems.map((item) => (
             <Link key={item.href} href={item.href} className="hover:text-accent">
               {item.label}
@@ -38,7 +39,7 @@ export default function SiteHeader() {
 
         <button
           type="button"
-          className="inline-flex items-center rounded-full border border-ink/15 bg-white/80 px-4 py-2 text-sm font-semibold text-ink shadow-sm transition hover:border-accent/40 hover:text-accent md:hidden"
+          className="inline-flex items-center rounded-full border border-ink/15 bg-white/80 px-4 py-2 text-sm font-semibold text-ink shadow-sm transition hover:border-accent/40 hover:text-accent lg:hidden"
           aria-expanded={isMenuOpen ? "true" : "false"}
           aria-controls="mobile-site-menu"
           aria-label={isMenuOpen ? "Close navigation menu" : "Open navigation menu"}
@@ -51,7 +52,7 @@ export default function SiteHeader() {
       {isMenuOpen ? (
         <nav
           id="mobile-site-menu"
-          className="mt-4 grid gap-2 rounded-2xl border border-ink/10 bg-white/90 p-3 shadow-lg backdrop-blur md:hidden"
+          className="mt-4 grid gap-2 rounded-2xl border border-ink/10 bg-white/90 p-3 shadow-lg backdrop-blur lg:hidden"
         >
           {navItems.map((item) => {
             const isActive = pathname === item.href;

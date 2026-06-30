@@ -36,12 +36,20 @@ export default async function HomePage() {
           className="prose-content mx-auto mt-4 max-w-3xl text-ink/80"
           dangerouslySetInnerHTML={{ __html: aboutHtml }}
         />
-        <Link
-          href="/experience"
-          className="mt-6 inline-flex justify-center text-base font-semibold text-accent"
-        >
-          See full experience
-        </Link>
+        <div className="mt-6 flex flex-wrap justify-center gap-3">
+          <Link
+            href="/about"
+            className="inline-flex rounded-full border border-accent/30 bg-accent/10 px-4 py-2 text-sm font-semibold text-accent shadow-sm hover:border-accent/60 hover:bg-accent/15"
+          >
+            Read full story
+          </Link>
+          <Link
+            href="/experience"
+            className="inline-flex rounded-full border border-ink/15 bg-white/80 px-4 py-2 text-sm font-semibold text-ink shadow-sm hover:border-accent/40 hover:text-accent"
+          >
+            See experience
+          </Link>
+        </div>
       </section>
 
       <Section
