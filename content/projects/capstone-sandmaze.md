@@ -1,7 +1,7 @@
 ---
 title: "Wearable Cave Mapping System"
 date: 2025-01-20
-excerpt: "Affordable wearable 3D cave-mapping system integrating IMU, LiDAR, and depth sensing for localization, tracking, and real-time mapping.<br/><img src='/images/projects/sandmaze/sm1.png'>"
+excerpt: "Affordable wearable 3D cave-mapping system integrating IMU, LiDAR, and depth sensing for localization, tracking, and real-time mapping.<br/><img src='/images/projects/sandmaze/Acutal-hat.JPG'>"
 collection: projects
 ---
 
@@ -13,6 +13,31 @@ This capstone project builds an **affordable wearable 3D scanning system for cav
 - **GitHub Repository:** [JustinLinKK/capstone-sandmaze](https://github.com/JustinLinKK/capstone-sandmaze)
 
 I led a **team of 5** and integrated multiple sensing and compute components into a single pipeline, including an **IMU**, **LiDAR**, **depth camera / ToF sensing**, and ROS 2-based localization nodes. The resulting system achieved about **3 hours of runtime** while updating the mapping pipeline at roughly **15 FPS**.
+
+## Prototype Build Photos
+
+<div class="project-image-grid">
+  <figure>
+    <img src="/images/projects/sandmaze/Acutal-hat.JPG" alt="Custom Sandmaze HAT PCB prototype" loading="lazy">
+    <figcaption>Custom HAT PCB prototype used to connect the sensing and compute stack.</figcaption>
+  </figure>
+  <figure>
+    <img src="/images/projects/sandmaze/workspace.JPG" alt="Sandmaze electronics workspace during prototype assembly" loading="lazy">
+    <figcaption>Prototype workspace during hardware assembly and integration.</figcaption>
+  </figure>
+  <figure>
+    <img src="/images/projects/sandmaze/Reflow%20Oven.JPG" alt="Digital reflow oven used for Sandmaze PCB soldering" loading="lazy">
+    <figcaption>Digital reflow oven used during PCB assembly.</figcaption>
+  </figure>
+  <figure>
+    <img src="/images/projects/sandmaze/Testing.JPG" alt="Sandmaze prototype testing setup" loading="lazy">
+    <figcaption>Hardware testing setup for the wearable mapping prototype.</figcaption>
+  </figure>
+  <figure>
+    <img src="/images/projects/sandmaze/sm1.png" alt="Sandmaze wearable head shell simulation" loading="lazy" class="project-image-grid__contain">
+    <figcaption>Wearable head-shell simulation used while planning the physical packaging.</figcaption>
+  </figure>
+</div>
 
 ## Objectives
 - **Affordable 3D Mapping:** Build a lower-cost alternative to heavier commercial cave-scanning setups.
